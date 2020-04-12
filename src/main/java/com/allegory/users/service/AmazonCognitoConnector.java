@@ -4,26 +4,25 @@ import com.allegory.users.constant.CognitoConfig;
 import com.allegory.users.constant.CognitoConstants;
 import com.allegory.users.model.NumberCheck;
 import com.allegory.users.model.NumberStatus;
+import com.amazonaws.auth.AWSStaticCredentialsProvider;
+import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.services.cognitoidp.AWSCognitoIdentityProvider;
+import com.amazonaws.services.cognitoidp.AWSCognitoIdentityProviderClientBuilder;
 import com.amazonaws.services.cognitoidp.model.*;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 
-/**
- *
- */
-@Component
 public class AmazonCognitoConnector {
 
 	private final AWSCognitoIdentityProvider identityProvider;
 
-	@Autowired
-	public AmazonCognitoConnector(AWSCognitoIdentityProvider identityProvider) {
-		this.identityProvider = identityProvider;
+	public AmazonCognitoConnector() {
+		BasicAWSCredentials creds = new BasicAWSCredentials(CognitoConfig.AWS_ACCESS_KEY, CognitoConfig.AWS_SECRET_KEY);
+		AWSCognitoIdentityProviderClientBuilder builder
+				= AWSCognitoIdentityProviderClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(creds));
+		builder.setRegion(CognitoConfig.AWS_REGION);
+		identityProvider =  builder.build();
 	}
-
 
 	public NumberStatus checkNumber(String number) {
 		ListUsersRequest listUsersRequest = createListUsersRequest();
