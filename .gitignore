@@ -1,0 +1,69 @@
+
+/target/
+!.mvn/wrapper/maven-wrapper.jar
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+.project
+.pydevproject
+.pydev
+
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+# Package Files #
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+# Maven
+log
+bin
+build
+target
+.springBeans
+.mvn
+!.mvn/wrapper/maven-wrapper.jar
+.factorypath
+/.apt_generated/
+.idea/
+
+# General
+*.DS_Store
+.AppleDouble
+.LSOverride
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+
+# Project settings
+src/main/resources/config.properties
+*.jks
+src/main/resources/public_key.txt
+logs/
+
+#intellij build files
+*.iml
+
